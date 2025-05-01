@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from "react";
-import { Pause, StopCircle } from "lucide-react";
+import { Pause, Play, StopCircle } from "lucide-react";
 
 export function SpaceBackground() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -78,7 +78,7 @@ export function SpaceBackground() {
             <>
                 <div className="absolute top-32 right-4 z-10 flex gap-2">
                     <button
-                        onClick={() => setVisible(true)}
+                        onClick={() => { setVisible(true); setRunning(true); }}
                         className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md"
                     >
                         Restart
@@ -95,7 +95,7 @@ export function SpaceBackground() {
                     onClick={() => setRunning(!running)}
                     className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md"
                 >
-                    <Pause size={18} />
+                    {running ? <Pause size={18} /> : <Play size={18} />}
                 </button>
                 <button
                     onClick={() => setVisible(false)}
