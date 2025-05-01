@@ -8,10 +8,6 @@ body[data-theme="dark"] label button {
 }
 
 .hyperlink {
-    color: #0000EE;
-}
-
-body[data-theme="dark"] .hyperlink {
     color: #63B3ED;
 }
 
@@ -29,20 +25,6 @@ body[data-theme="dark"] input::placeholder {
     color: #3F437F;
 }
 
-.container {
-    margin: 1rem;
-    padding: 1rem;
-    border: 1px rgb(220, 220, 220) solid;
-    background-color: white;
-    border-radius: 8px;
-    max-width: 97%;
-}
-
-.flex>.container {
-    margin: 0;
-}
-
-body[data-theme="dark"] .container {
-    background-color: #1C1C43;
-    border: 1px solid #323378;
+.page {
+    padding: 16px;
 }

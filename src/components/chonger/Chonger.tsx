@@ -10,12 +10,7 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { ChongerSentence } from "@/types/chonger";
-
-type ChongerProps = {
-    sentences: ChongerSentence[];
-    ignoredChars: string[];
-};
+import { useChongerStore } from "@/store/useChongerStore";
 
 function WordWithTooltip({ char, ignoredChars }: { char: string; ignoredChars: string[] }) {
     if (ignoredChars.includes(char)) return <span>{char}</span>;
@@ -34,11 +29,14 @@ function WordWithTooltip({ char, ignoredChars }: { char: string; ignoredChars: s
     );
 }
 
-export default function Chonger({ sentences, ignoredChars }: ChongerProps) {
+export default function Chonger() {
     const [input, setInput] = useState("");
     const [showResults, setShowResults] = useState(true);
     const [showGrammar, setShowGrammar] = useState(true);
     const [showIPlusOne, setShowIPlusOne] = useState(true);
+
+    const sentences = useChongerStore((store) => store.sentences);
+    const ignoredChars = useChongerStore((store) => store.ignoredChars);
 
     const handleTransform = () => {
         if (input.trim()) setShowResults(true);

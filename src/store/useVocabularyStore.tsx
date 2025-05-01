@@ -1,5 +1,6 @@
 import { create } from "zustand";
-import type { VocabularyState, Vocabulary } from "@/types/vocabulary";
+import type { VocabularyState, Vocabulary, VocabularyItem, OrbItem } from "@/types/vocabulary";
+import { MessageSquare, Sparkles, Volume2 } from "lucide-react";
 
 const defaultVocabulary: Vocabulary = {
     name: "Dictionary",
@@ -107,11 +108,58 @@ const defaultVocabularies: Vocabulary[] = [
     },
 ];
 
+const defaultVocabularyGarden: VocabularyItem[] = [
+    { word: "Perseverance", translation: "Beharrlichkeit", lastPracticed: "3 days ago", resonance: 78 },
+    { word: "Reflection", translation: "Reflexion", lastPracticed: "1 day ago", resonance: 92 },
+    { word: "Ambiguity", translation: "Zweideutigkeit", lastPracticed: "5 days ago", resonance: 65 },
+    { word: "Wonder", translation: "Wunder", lastPracticed: "Yesterday", resonance: 88 },
+    { word: "Transformation", translation: "Verwandlung", lastPracticed: "4 days ago", resonance: 72 },
+];
+
+const defaultFeedbackList: string[] = [
+    "Your vocabulary choices reflect a growing emotional range, especially in how you describe abstract concepts.",
+    "The rhythm in your speech has developed a more natural cadence, particularly when asking questions.",
+    "Notice how your word choice shifts when discussing personal versus theoretical topics. This is a fascinating pattern."
+];
+
+const defaultOrbs: OrbItem[] = [
+    {
+        icon: <Volume2 className="text-white" size={20} />,
+        title: "First conversation practice",
+        date: "Last week",
+        style: {
+            background: "linear-gradient(to right, rgba(31,46,85,0.4), rgba(43,62,109,0.4))"
+        }
+    },
+    {
+        icon: <Sparkles className="text-white" size={20} />,
+        title: "Reflection on cultural nuance",
+        date: "3 days ago",
+        style: {
+            background: "linear-gradient(to right, rgba(95,44,103,0.4), rgba(139,61,116,0.4))"
+        }
+    },
+    {
+        icon: <MessageSquare className="text-white" size={20} />,
+        title: "Written practice with Aalam",
+        date: "Yesterday",
+        style: {
+            background: "linear-gradient(to right, rgba(51,38,85,0.4), rgba(78,52,116,0.4))"
+        }
+    }
+];
+
 export const useVocabularyStore = create<VocabularyState>((set) => ({
     vocabulary: defaultVocabulary,
     vocabularies: defaultVocabularies,
+    vocabulariesGarden: defaultVocabularyGarden,
+    feedbackList: defaultFeedbackList,
+    orbs: defaultOrbs,
     setVocabulary: (vocabulary) => set({ vocabulary }),
     setVocabularies: (vocabularies) => set({ vocabularies }),
+    setVocabulariesGarden: (vocabulariesGarden) => set({ vocabulariesGarden }),
+    setFeedbackList: (feedbackList) => set({ feedbackList }),
+    setOrbs: (orbs) => set({ orbs }),
     clearVocabulary: () => set({ vocabulary: null }),
     clearVocabularies: () => set({ vocabularies: [] }),
 }));

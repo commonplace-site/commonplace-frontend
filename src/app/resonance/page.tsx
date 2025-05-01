@@ -1,6 +1,6 @@
 export default function Resonance() {
     return (
-        <div className="container">
+        <div className="page">
             <h1 className="title">Resonance</h1>
         </div>
     );

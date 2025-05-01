@@ -113,31 +113,110 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@font-face {
+  font-family: "Sora";
+  src: url("/fonts/Sora/Sora-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sora";
+  src: url("/fonts/Sora/Sora-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sora";
+  src: url("/fonts/Sora/Sora-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sora";
+  src: url("/fonts/Sora/Sora-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sora";
+  src: url("/fonts/Sora/Sora-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sora";
+  src: url("/fonts/Sora/Sora-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sora";
+  src: url("/fonts/Sora/Sora-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sora";
+  src: url("/fonts/Sora/Sora-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
 
-  body[data-theme="light"] {
+  body {
     @apply bg-background text-foreground;
-    background-color: #F6FAFD;
-  }
-
-  body[data-theme="dark"] {
-    @apply bg-background text-foreground;
-    background-color: #121428;
-  }
-
-  body[data-theme="dark"] .title,
-  body[data-theme="dark"] .subtitle {
-    color: #DFE7FF;
+    background-color: #1A1533;
   }
 
   .title {
-    @apply text-2xl font-bold text-gray-800 mb-1;
+    @apply text-[24px] font-[500] tracking-[-0.03em] text-white;
+    font-family: "Sora", sans-serif;
   }
 
   .subtitle {
-    @apply text-gray-500 mb-2 text-base;
+    @apply text-[16px] font-[600] tracking-[-0.05em] text-[#DFE7FF] mb-2 ml-2;
+    font-family: "Sora", sans-serif;
+  }
+
+  .text-title {
+    @apply text-[16px] font-[600] tracking-[-0.05em] text-white mt-1 mb-1;
+    font-family: "Sora", sans-serif;
+  }
+
+  .text-subtitle {
+    @apply text-[14px] font-[500] tracking-[-0.05em] text-[#DFE7FF]/80 mt-1 mb-1;
+    font-family: "Sora", sans-serif;
+  }
+
+  .text-description {
+    @apply text-[12px] font-[500] tracking-[-0.05em] text-[#9498C1] mt-1 mb-1;
+    font-family: "Sora", sans-serif;
+  }
+
+  .container {
+    @apply rounded-md bg-black/40 p-4 text-sm text-white border border-[#322945];
+  }
+
+  section {
+    @apply w-[80%] mt-8 mx-auto;
   }
 }

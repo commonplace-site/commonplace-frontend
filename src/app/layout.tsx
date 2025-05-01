@@ -6,6 +6,7 @@ import Header from "@/components/header/Header";
 import Sidebar from "@/components/sidebar/Sidebar";
 import UserHeader from "@/components/user-header/UserHeader";
 import { ThemeProvider } from "./ThemeContext";
+import { SpaceBackground } from "@/components/space-background/SpaceBackground";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,8 +28,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <ThemeProvider>
         <body className={`${geistMono} ${geistSans} min-h-screen flex flex-col antialiased`}>
+          <SpaceBackground />
           <Header />
-          <div className="flex flex-1">
+          <div className="flex flex-1 h-full">
             <Sidebar />
             <main className="flex-1 overflow-auto">
               <UserHeader />

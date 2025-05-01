@@ -45,7 +45,7 @@ export default function Sidebar() {
     const activeTab = useUserStore((state) => state.activeTab) as 'explorer' | 'guide' | 'curator';
 
     return (
-        <div className={`transition-all duration-200 bg-white dark:bg-[#0D0E1C] dark:border-[color:#070713] border-r border-gray-200 shadow-sm ${collapsed ? "w-16" : "w-64 absolute"} flex flex-col h-screen sm:relative z-50`}>
+        <div className={`transition-all duration-200 bg-white dark:bg-[#0D0E1C] dark:border-[color:#070713] border-r border-gray-200 shadow-sm ${collapsed ? "w-16" : "w-64 absolute"} flex flex-col min-h-screen sm:relative z-50`}>
             <div className="flex h-[60px] sm:h-[70px] items-center p-4 shadow-sm border-b border-gray-200 dark:border-[#242734] w-full">
                 {!collapsed && (
                     <span className="font-extrabold text-lg sm:text-xl bg-gradient-to-r from-blue-300 via-purple-300 via-pink-300 to-cyan-300 bg-clip-text text-transparent tracking-wide transition-all duration-200 mr-2">

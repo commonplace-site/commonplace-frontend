@@ -4,6 +4,8 @@ import { useUserStore } from "@/store/useUserStore";
 import { CurrentUser } from "@/types/user";
 import { Bell, Search } from "lucide-react";
 
+const notificationsCount = 3;
+
 const UserHeader = () => {
     const currentUser: CurrentUser | null = useUserStore((state) => state.currentUser);
 
@@ -32,7 +34,11 @@ const UserHeader = () => {
                     </div>
                     <button className="relative p-2 hover:bg-gray-100 rounded-full transition">
                         <Bell size={20} className="text-gray-600" />
-                        <span className="absolute top-0.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white" />
+                        {notificationsCount > 0 && (
+                            <span className="absolute -top-[-4px] -right-[-4px] w-[10px] h-[10px] bg-red-500 text-white text-[8px] leading-[10px] font-semibold rounded-full text-center px-1">
+                                <span className="relative left-[-2px]">{notificationsCount}</span>
+                            </span>
+                        )}
                     </button>
                     <div className="w-10 h-10 flex items-center justify-center rounded-full bg-[#9B87F5] text-white text-indigo-700 font-bold text-xl select-none">
                         {currentUser?.username?.[0]?.toUpperCase() || "U"}
