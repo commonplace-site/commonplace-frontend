@@ -20,7 +20,7 @@ const menuItems: Record<'explorer' | 'guide' | 'curator', { href: string; label:
         { href: "/i1-media", label: "i+1 Media", icon: <TrendingUp size={18} />, disabled: false },
         { href: "/groups", label: "Groups", icon: <Group size={18} />, disabled: true },
         { href: "/intake", label: "Intake", icon: <FilePlus size={18} />, disabled: true },
-        { href: "/unused-components", label: "Unused Components", icon: <Component size={18} />, disabled: false },
+        { href: "/unused-components", label: "Unused Components", icon: <Component size={18} />, disabled: true },
         { href: "/account-settings", label: "Account Settings", icon: <Settings size={18} />, disabled: true },
     ],
     guide: [
