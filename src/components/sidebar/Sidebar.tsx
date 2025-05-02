@@ -1,7 +1,7 @@
 'use client'
 
 import { JSX, useState } from "react";
-import { Activity, BookOpen, BookOpenText, BookText, ChevronLeft, ChevronRight, Compass, FilePlus, Globe, Group, LandPlot, Layers, LayoutDashboard, LayoutGrid, Link2, Map, Package, Settings, TreePine, TrendingUp, Users } from "lucide-react";
+import { Activity, BookOpen, BookOpenText, BookText, ChevronLeft, ChevronRight, Compass, Component, FilePlus, Globe, Group, LandPlot, Layers, LayoutDashboard, LayoutGrid, Link2, Map, Package, Settings, TreePine, TrendingUp, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -10,16 +10,17 @@ import { useUserStore } from "@/store/useUserStore";
 const menuItems: Record<'explorer' | 'guide' | 'curator', { href: string; label: string; icon: JSX.Element | null; disabled: boolean }[]> = {
     explorer: [
         { href: "/", label: "Dashboard", icon: <LayoutDashboard size={18} />, disabled: false },
-        { href: "/garden", label: "Garden", icon: <TreePine size={18} />, disabled: true },
+        { href: "/garden", label: "Garden", icon: <TreePine size={18} />, disabled: false },
         { href: "/modules", label: "Modules", icon: <Package size={18} />, disabled: true },
-        { href: "/aalam", label: "Aalam", icon: <Globe size={18} />, disabled: true },
-        { href: "/journey-map", label: "Journey Map", icon: <Map size={18} />, disabled: true },
-        { href: "/shadowbank", label: "Shadowbank", icon: <Users size={18} />, disabled: true },
-        { href: "/language-test", label: "Language Test", icon: <BookOpen size={18} />, disabled: true },
+        // { href: "/aalam", label: "Aalam", icon: <Globe size={18} />, disabled: true },
+        // { href: "/journey-map", label: "Journey Map", icon: <Map size={18} />, disabled: true },
+        { href: "/shadowbank", label: "Shadowbank", icon: <Users size={18} />, disabled: false },
+        { href: "/language-test", label: "Language Test", icon: <BookOpen size={18} />, disabled: false },
         { href: "/i1-radio", label: "i+1 Radio", icon: <BookText size={18} />, disabled: false },
         { href: "/i1-media", label: "i+1 Media", icon: <TrendingUp size={18} />, disabled: false },
         { href: "/groups", label: "Groups", icon: <Group size={18} />, disabled: true },
         { href: "/intake", label: "Intake", icon: <FilePlus size={18} />, disabled: true },
+        { href: "/unused-components", label: "Unused Components", icon: <Component size={18} />, disabled: false },
         { href: "/account-settings", label: "Account Settings", icon: <Settings size={18} />, disabled: true },
     ],
     guide: [
@@ -45,7 +46,7 @@ export default function Sidebar() {
     const activeTab = useUserStore((state) => state.activeTab) as 'explorer' | 'guide' | 'curator';
 
     return (
-        <div className={`transition-all duration-200 bg-white dark:bg-[#0D0E1C] dark:border-[color:#070713] border-r border-gray-200 shadow-sm ${collapsed ? "w-16" : "w-64 absolute"} flex flex-col min-h-screen sm:relative z-50`}>
+        <div className={`transition-all duration-200 bg-white dark:bg-[#0D0E1C] dark:border-[color:#070713] border-r border-gray-200 shadow-sm ${collapsed ? "w-16" : "w-64 absolute"} flex flex-col sm:relative z-50`}>
             <div className="flex h-[60px] sm:h-[70px] items-center p-4 shadow-sm border-b border-gray-200 dark:border-[#242734] w-full">
                 {!collapsed && (
                     <span className="font-extrabold text-lg sm:text-xl bg-gradient-to-r from-blue-300 via-purple-300 via-pink-300 to-cyan-300 bg-clip-text text-transparent tracking-wide transition-all duration-200 mr-2">

@@ -17,7 +17,7 @@ const PageTitle = ({ returnPage, returnPageHref, title = 'Unknown Page', icon = 
                 <div className="title">{title}</div>
             </div>
         </div>
-        {subtitle && <div className="subtitle w-fit m-auto">{subtitle}</div>}
+        {subtitle && <div className="subtitle w-fit m-auto mt-2">{subtitle}</div>}
     </div>
 }
 

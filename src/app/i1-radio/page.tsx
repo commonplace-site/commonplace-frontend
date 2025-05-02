@@ -10,18 +10,16 @@ export default function I1Radio() {
     return (
         <div className="page">
             <PageTitle title="i+1 Radio" returnPage="Dashboard" returnPageHref="/" icon={<BookText size={22} />} subtitle="Words you’ve been learning" />
-            <section>
-                <div className="flex flex-wrap justify-center gap-4">
-                    {vocabularies.map((dict) => (
-                        <VocabularyList
-                            key={dict.name}
-                            vocabularyName={dict.name}
-                            progress={dict.progress}
-                            words={dict.words}
-                            type='list'
-                        />
-                    ))}
-                </div>
+            <section className="flex flex-wrap justify-center gap-4">
+                {vocabularies.map((dict) => (
+                    <VocabularyList
+                        key={dict.name}
+                        vocabularyName={dict.name}
+                        progress={dict.progress}
+                        words={dict.words}
+                        type='list'
+                    />
+                ))}
             </section>
         </div>
     );

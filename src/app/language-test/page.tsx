@@ -1,7 +1,20 @@
+'use client'
+
+import PageTitle from "@/components/page-title/PageTitle";
+import Questions from "@/components/questions/Questions";
+import { useQuestionsStore } from "@/store/useQuestionsStore";
+import { BookOpen } from "lucide-react";
+import { useState } from "react";
+
 export default function LanguageTest() {
+    const languageTestQuestions = useQuestionsStore((store) => store.languageTestQuestions);
+    const [page, setPage] = useState(1);
     return (
         <div className="page">
-            <h1 className="title">Language Test</h1>
+            <PageTitle title="Language Test" returnPage="Dashboard" returnPageHref="/" icon={<BookOpen size={22} />} />
+            <section>
+                <Questions page={page} setPage={setPage} questions={languageTestQuestions} />
+            </section>
         </div>
     );
 }

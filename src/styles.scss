@@ -2,8 +2,11 @@
     background-color: #51A7E8;
 }
 
-body[data-theme="dark"] label button {
-    background-color: #0D0E1C;
+body[data-theme="dark"] label button,
+body[data-theme="dark"] input[type="radio"] {
+    background-color: #A5B4FB;
+    color: black;
+    accent-color: #A5B4FB;
     border: 0;
 }
 
@@ -11,20 +14,35 @@ body[data-theme="dark"] label button {
     color: #63B3ED;
 }
 
-input {
+input,
+textarea {
     background-color: #fff;
 }
 
-body[data-theme="dark"] input {
-    background-color: #161634;
+body[data-theme="dark"] input,
+body[data-theme="dark"] textarea {
+    background-color: #402F62;
     border: 1px #2D2E6E solid;
     color: white;
 }
 
-body[data-theme="dark"] input::placeholder {
-    color: #3F437F;
+body[data-theme="dark"] input::placeholder,
+body[data-theme="dark"] textarea::placeholder {
+    color: #8E82A1;
 }
 
 .page {
     padding: 16px;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
 }

@@ -197,6 +197,11 @@
     font-family: "Sora", sans-serif;
   }
 
+  .text-big {
+    @apply text-[22px] font-[600] tracking-[-0.05em] text-[#E9E7EE] mt-1 mb-1;
+    font-family: "Sora", sans-serif;
+  }
+
   .text-title {
     @apply text-[16px] font-[600] tracking-[-0.05em] text-white mt-1 mb-1;
     font-family: "Sora", sans-serif;
