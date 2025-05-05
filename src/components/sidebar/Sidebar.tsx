@@ -1,7 +1,7 @@
 'use client'
 
 import { JSX, useState } from "react";
-import { Activity, BookOpen, BookOpenText, BookText, ChevronLeft, ChevronRight, Compass, Component, FilePlus, Group, Info, LandPlot, Layers, LayoutDashboard, LayoutGrid, Link2, Notebook, Package, Settings, Text, TreePine, TrendingUp, Users, Workflow } from "lucide-react";
+import { Activity, BookOpen, BookOpenText, BookText, ChevronLeft, ChevronRight, Compass, FilePlus, Group, Info, LandPlot, Layers, LayoutDashboard, LayoutGrid, Link2, Notebook, Package, Settings, Text, TreePine, TrendingUp, Users, Workflow } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
