@@ -24,10 +24,9 @@ import { iconMap, IconName } from "@/constants/iconMap";
 
 const SidebarItemManagement = () => {
     const currentUser = useUserStore((store) => store.currentUser);
-    if (!currentUser) return <div></div>
 
     const updateCurrentUser = useUserStore((store) => store.updateCurrentUser);
-    const role = currentUser.role;
+    const role = currentUser?.role as "Student" | "Teacher" | "Admin";
 
     const [sortableItems, setSortableItems] = useState(
         currentUser?.sidebar_items?.[role] ?? []
@@ -129,6 +128,7 @@ const SidebarItemManagement = () => {
         );
 
         setSortableItems(newAllItems);
+        if (!currentUser || !role) return;
         updateCurrentUser({
             sidebar_items: {
                 ...currentUser.sidebar_items,
