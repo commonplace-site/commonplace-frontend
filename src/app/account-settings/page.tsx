@@ -25,19 +25,22 @@ import { iconMap, IconName } from "@/constants/iconMap";
 
 const SidebarItemManagement = () => {
     const currentUser = useUserStore((store) => store.currentUser);
-
     const updateCurrentUser = useUserStore((store) => store.updateCurrentUser);
-    const role = currentUser?.role;
-    if (!currentUser || !role) return null;
+    const role = currentUser?.role as "Student" | "Teacher" | "Admin";
 
-
-    const [sortableItems, setSortableItems] = useState(() => currentUser.sidebar_items[role]);
-
-    useEffect(() => {
-        setSortableItems(currentUser?.sidebar_items?.[role] ?? []);
-    }, [currentUser?.sidebar_items, role]);
+    const [sortableItems, setSortableItems] = useState(
+        currentUser?.sidebar_items?.[role] ?? []
+    );
 
     const sensors = useSensors(useSensor(PointerSensor));
+
+    useEffect(() => {
+        if (currentUser && role) {
+            setSortableItems(currentUser.sidebar_items[role] ?? []);
+        }
+    }, [currentUser?.sidebar_items, role]);
+
+    if (!currentUser || !role) return null;
 
     const groupedItems = sortableItems.reduce((acc, item) => {
         const group = item.group || 'Ungrouped';
@@ -96,8 +99,7 @@ const SidebarItemManagement = () => {
                         e.stopPropagation();
                         onToggleVisible();
                     }}
-                    className={`cursor-pointer ${visible ? 'text-white' : 'text-gray-500'
-                        } transition-colors`}
+                    className={`cursor-pointer ${visible ? 'text-white' : 'text-gray-500'} transition-colors`}
                 >
                     {visible ? <Eye size={18} /> : <EyeOff size={18} />}
                 </button>
@@ -109,12 +111,12 @@ const SidebarItemManagement = () => {
         const { active, over } = event;
         if (!active || !over || active.id === over.id) return;
 
-        const [activeGroupKey, activeGroupItems] = Object.entries(groupedItems).find(
-            ([_, items]) => items.some((i) => i.href === active.id)
+        const [activeGroupKey] = Object.entries(groupedItems).find(
+            ([, items]) => items.some((i) => i.label === active.id)
         ) || [];
 
         const [overGroupKey] = Object.entries(groupedItems).find(
-            ([_, items]) => items.some((i) => i.href === over.id)
+            ([, items]) => items.some((i) => i.label === over.id)
         ) || [];
 
         if (!activeGroupKey || activeGroupKey !== overGroupKey) return;
@@ -124,12 +126,16 @@ const SidebarItemManagement = () => {
         const newIndex = groupItems.findIndex((i) => i.label === over.id);
         const newGroupItems = arrayMove(groupItems, oldIndex, newIndex);
 
-        const newAllItems = sortableItems.map((item) =>
-            item.group === activeGroupKey ? newGroupItems.shift()! : item
-        );
+        const newAllItems: typeof sortableItems = [];
+        for (const [group, items] of Object.entries(groupedItems)) {
+            if (group === activeGroupKey) {
+                newAllItems.push(...newGroupItems);
+            } else {
+                newAllItems.push(...items);
+            }
+        }
 
         setSortableItems(newAllItems);
-        if (!currentUser || !role) return;
         updateCurrentUser({
             sidebar_items: {
                 ...currentUser.sidebar_items,
@@ -137,8 +143,6 @@ const SidebarItemManagement = () => {
             },
         });
     };
-
-    if (!currentUser) return null;
 
     return (
         <section>
@@ -155,19 +159,19 @@ const SidebarItemManagement = () => {
                                 {group}
                             </div>
                             <SortableContext
-                                items={items.map((item) => item.href)}
+                                items={items.map((item) => item.label)}
                                 strategy={verticalListSortingStrategy}
                             >
-                                {items.map((item, index) => (
+                                {items.map((item) => (
                                     <SortableItem
-                                        key={item.href}
-                                        id={item.href}
+                                        key={item.label}
+                                        id={item.label}
                                         label={item.label}
                                         icon={item.icon as IconName}
                                         visible={item.visible}
                                         onToggleVisible={() => {
                                             const updatedItems = [...sortableItems];
-                                            const globalIndex = sortableItems.findIndex(
+                                            const globalIndex = updatedItems.findIndex(
                                                 (i) => i.label === item.label
                                             );
                                             updatedItems[globalIndex].visible =
