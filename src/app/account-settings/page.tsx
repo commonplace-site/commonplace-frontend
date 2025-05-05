@@ -12,6 +12,7 @@ import {
     PointerSensor,
     useSensor,
     useSensors,
+    DragEndEvent,
 } from "@dnd-kit/core";
 import {
     SortableContext,
@@ -104,7 +105,7 @@ const SidebarItemManagement = () => {
         );
     };
 
-    const handleDragEnd = (event: any) => {
+    const handleDragEnd = (event: DragEndEvent) => {
         const { active, over } = event;
         if (!active || !over || active.id === over.id) return;
 
