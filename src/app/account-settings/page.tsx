@@ -27,11 +27,11 @@ const SidebarItemManagement = () => {
     const currentUser = useUserStore((store) => store.currentUser);
 
     const updateCurrentUser = useUserStore((store) => store.updateCurrentUser);
-    const role = currentUser?.role as "Student" | "Teacher" | "Admin";
+    const role = currentUser?.role;
+    if (!currentUser || !role) return null;
 
-    const [sortableItems, setSortableItems] = useState(
-        currentUser?.sidebar_items?.[role] ?? []
-    );
+
+    const [sortableItems, setSortableItems] = useState(() => currentUser.sidebar_items[role]);
 
     useEffect(() => {
         setSortableItems(currentUser?.sidebar_items?.[role] ?? []);
@@ -110,11 +110,11 @@ const SidebarItemManagement = () => {
         if (!active || !over || active.id === over.id) return;
 
         const [activeGroupKey, activeGroupItems] = Object.entries(groupedItems).find(
-            ([_, items]) => items.some((i) => i.label === active.id)
+            ([_, items]) => items.some((i) => i.href === active.id)
         ) || [];
 
         const [overGroupKey] = Object.entries(groupedItems).find(
-            ([_, items]) => items.some((i) => i.label === over.id)
+            ([_, items]) => items.some((i) => i.href === over.id)
         ) || [];
 
         if (!activeGroupKey || activeGroupKey !== overGroupKey) return;
@@ -155,13 +155,13 @@ const SidebarItemManagement = () => {
                                 {group}
                             </div>
                             <SortableContext
-                                items={items.map((item) => item.label)}
+                                items={items.map((item) => item.href)}
                                 strategy={verticalListSortingStrategy}
                             >
                                 {items.map((item, index) => (
                                     <SortableItem
-                                        key={item.label}
-                                        id={item.label}
+                                        key={item.href}
+                                        id={item.href}
                                         label={item.label}
                                         icon={item.icon as IconName}
                                         visible={item.visible}
