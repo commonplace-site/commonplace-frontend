@@ -1,36 +1,39 @@
 'use client'
 
 import { JSX, useState } from "react";
-import { Activity, BookOpen, BookOpenText, BookText, ChevronLeft, ChevronRight, Compass, Component, FilePlus, Group, LandPlot, Layers, LayoutDashboard, LayoutGrid, Link2, Package, Settings, TreePine, TrendingUp, Users } from "lucide-react";
+import { Activity, BookOpen, BookOpenText, BookText, ChevronLeft, ChevronRight, Compass, Component, FilePlus, Group, Info, LandPlot, Layers, LayoutDashboard, LayoutGrid, Link2, Notebook, Package, Settings, Text, TreePine, TrendingUp, Users, Workflow } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useUserStore } from "@/store/useUserStore";
 
-const menuItems: Record<'explorer' | 'guide' | 'curator', { href: string; label: string; icon: JSX.Element | null; disabled: boolean }[]> = {
-    explorer: [
-        { href: "/", label: "Dashboard", icon: <LayoutDashboard size={18} />, disabled: false },
-        { href: "/garden", label: "Garden", icon: <TreePine size={18} />, disabled: false },
+const menuItems: Record<'Student' | 'Teacher' | 'Admin', { href: string; label: string; icon: JSX.Element | null; disabled: boolean }[]> = {
+    Student: [
+        { href: "/", label: "Home Page", icon: <LayoutDashboard size={18} />, disabled: false },
         { href: "/modules", label: "Modules", icon: <Package size={18} />, disabled: true },
+        { href: "/garden", label: "Garden", icon: <TreePine size={18} />, disabled: false },
         // { href: "/aalam", label: "Aalam", icon: <Globe size={18} />, disabled: true },
         // { href: "/journey-map", label: "Journey Map", icon: <Map size={18} />, disabled: true },
-        { href: "/shadowbank", label: "Shadowbank", icon: <Users size={18} />, disabled: false },
-        { href: "/language-test", label: "Language Test", icon: <BookOpen size={18} />, disabled: false },
         { href: "/i1-radio", label: "i+1 Radio", icon: <BookText size={18} />, disabled: false },
         { href: "/i1-media", label: "i+1 Media", icon: <TrendingUp size={18} />, disabled: false },
+        { href: "/language-test", label: "Language Test", icon: <BookOpen size={18} />, disabled: false },
+        { href: "/shadowbank", label: "Shadowbank", icon: <Users size={18} />, disabled: false },
+        { href: "/notebook", label: "Notebook", icon: <Notebook size={18} />, disabled: true },
+        { href: "/workspace", label: "Workspace", icon: <Workflow size={18} />, disabled: true },
         { href: "/groups", label: "Groups", icon: <Group size={18} />, disabled: true },
-        { href: "/intake", label: "Intake", icon: <FilePlus size={18} />, disabled: true },
-        { href: "/unused-components", label: "Unused Components", icon: <Component size={18} />, disabled: true },
-        { href: "/account-settings", label: "Account Settings", icon: <Settings size={18} />, disabled: true },
+        { href: "/comments", label: "Comments", icon: <Text size={18} />, disabled: true },
+        { href: "/uptake", label: "Uptake", icon: <FilePlus size={18} />, disabled: true },
+        { href: "/account-settings", label: "Account Settings", icon: <Settings size={18} />, disabled: false },
+        { href: "/about", label: "About", icon: <Info size={18} />, disabled: true },
     ],
-    guide: [
+    Teacher: [
         { href: "/garden", label: "Presence", icon: <TreePine size={18} />, disabled: true },
         { href: "/explorers", label: "Explorers", icon: <Compass size={18} />, disabled: true },
         { href: "/realms", label: "Realms", icon: <LandPlot size={18} />, disabled: true },
         { href: "/resonance", label: "Resonance", icon: <Activity size={18} />, disabled: true },
         { href: "/account-settings", label: "Account Settings", icon: <Settings size={18} />, disabled: true },
     ],
-    curator: [
+    Admin: [
         { href: "/garden", label: "Realm View", icon: <TreePine size={18} />, disabled: true },
         { href: "/enitities", label: "Enitities", icon: <Layers size={18} />, disabled: true },
         { href: "/narratives", label: "Narratives", icon: <BookOpenText size={18} />, disabled: true },
@@ -43,7 +46,7 @@ const menuItems: Record<'explorer' | 'guide' | 'curator', { href: string; label:
 export default function Sidebar() {
     const pathname = usePathname();
     const [collapsed, setCollapsed] = useState(false);
-    const activeTab = useUserStore((state) => state.activeTab) as 'explorer' | 'guide' | 'curator';
+    const currentUser = useUserStore((state) => state.currentUser);
 
     return (
         <div className={`transition-all duration-200 bg-white dark:bg-[#0D0E1C] dark:border-[color:#070713] border-r border-gray-200 shadow-sm ${collapsed ? "w-16" : "w-64 absolute"} flex flex-col sm:relative z-50`}>
@@ -65,7 +68,7 @@ export default function Sidebar() {
             </div>
 
             <nav className="flex flex-col gap-2 mt-4 px-2 overflow-y-auto">
-                {menuItems[activeTab].map(({ href, label, icon, disabled }) => (
+                {currentUser?.role && menuItems[currentUser.role].map(({ href, label, icon, disabled }) => (
                     <Link
                         key={href}
                         href={disabled ? "#" : href}

@@ -5,15 +5,15 @@ import { useUserStore } from "@/store/useUserStore";
 import Link from "next/link";
 
 const navItems = [
-    { label: "Explorer", value: "explorer" },
-    { label: "Guide", value: "guide" },
-    { label: "Curator", value: "curator" },
+    { label: "Student", value: "student" },
+    { label: "Teacher", value: "teacher" },
+    { label: "Admin", value: "admin" },
 ];
 
 export default function Header() {
     const { theme, toggleTheme } = useTheme();
-    const activeTab: string = useUserStore((state) => state.activeTab);
-    const setActiveTab: (tab: string) => void = useUserStore((state) => state.setActiveTab);
+    const currentUser = useUserStore((state) => state.currentUser);
+    const setCurrentUser = useUserStore((state) => state.setCurrentUser);
 
     return (
         <header className="w-full shadow-sm bg-[#50A7E7] dark:bg-[#351C60]">
@@ -28,8 +28,8 @@ export default function Header() {
                         <Link
                             key={item.value}
                             href="#"
-                            onClick={() => setActiveTab(item.value)}
-                            className={`text-base font-medium transition-colors px-3 py-1 rounded-md ${activeTab === item.value
+                            onClick={() => setCurrentUser({ ...currentUser, role: item.label as "Student" | "Teacher" | "Admin", username: currentUser?.username || "" })}
+                            className={`text-base font-medium transition-colors px-3 py-1 rounded-md ${currentUser?.role === item.label
                                 ? "bg-white dark:text-black text-[#51A7E8]"
                                 : "text-white hover:bg-white/20"
                                 }`}
