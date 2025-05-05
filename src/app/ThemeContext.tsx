@@ -1,5 +1,3 @@
-'use client'
-
 "use client";
 import { createContext, useState, useContext, ReactNode, useEffect } from "react";
 
@@ -19,7 +17,7 @@ export const useTheme = () => {
 };
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>("dark");
 
   // persist theme in localStorage
   useEffect(() => {
