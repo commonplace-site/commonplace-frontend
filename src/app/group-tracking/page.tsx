@@ -15,6 +15,17 @@ const GroupTracking = () => {
     const [editGroupName, setEditGroupName] = useState('');
     const [selectedUserIds, setSelectedUserIds] = useState<string[]>([]);
     const [editUserIds, setEditUserIds] = useState<string[]>([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [archiveFilter, setArchiveFilter] = useState<'all' | 'archived' | 'active'>('all');
+    const [filterDropdownOpen, setFilterDropdownOpen] = useState(false);
+
+
+    const filteredGroups = groups.filter(group =>
+        group.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
+        (archiveFilter === 'all' ||
+            (archiveFilter === 'archived' && group.archived) ||
+            (archiveFilter === 'active' && !group.archived))
+    );
 
     const toggleArchive = (id: string) => {
         setGroups(groups.map((g) =>
@@ -61,6 +72,46 @@ const GroupTracking = () => {
         <div className="page">
             <PageTitle title="Group Tracking" icon={<Group />} returnPage='Dashboard' returnPageHref='/' subtitle='Cohort and Group Tracking' />
             <section>
+                <div className="flex items-center gap-2 mb-4">
+                    <Input
+                        placeholder="Search group..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className="flex-1"
+                    />
+                    <div className="relative">
+                        <Button
+                            variant="outline"
+                            className="text-subtitle border-0"
+                            onClick={() => setFilterDropdownOpen(!filterDropdownOpen)}
+                        >
+                            {archiveFilter === 'all'
+                                ? 'Show All'
+                                : archiveFilter === 'active'
+                                    ? 'Only Active'
+                                    : 'Only Archived'}
+                        </Button>
+                        {filterDropdownOpen && (
+                            <div className="absolute right-0 mt-1 bg-[#2a2930] border border-[#444] rounded-md shadow-lg z-10 w-44">
+                                {['all', 'active', 'archived'].map((val) => (
+                                    <button
+                                        key={val}
+                                        onClick={() => {
+                                            setArchiveFilter(val as typeof archiveFilter);
+                                            setFilterDropdownOpen(false);
+                                        }}
+                                        className={`w-full px-4 py-2 text-left text-sm text-white hover:bg-white/10 ${archiveFilter === val ? 'bg-white/10' : ''
+                                            }`}
+                                    >
+                                        {val === 'all' ? 'Show All' : val === 'active' ? 'Only Active' : 'Only Archived'}
+                                    </button>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </section>
+            <section>
                 <div className="flex items-center justify-between mb-2">
                     <h2 className="subtitle mb-0">Existing Groups</h2>
                     <Button onClick={() => setEditingGroupId("new")}>
@@ -68,7 +119,7 @@ const GroupTracking = () => {
                     </Button>
                 </div>
                 <div className="space-y-4">
-                    {groups.map((group) => (
+                    {filteredGroups.map((group) => (
                         <div key={group.id} className="container">
                             <div className="flex justify-between items-start">
                                 <div>
@@ -142,12 +193,12 @@ const GroupTracking = () => {
                         </div>
 
                         <div className="flex justify-end gap-3">
-                            <Button variant="ghost" onClick={() => {
+                            <Button variant="ghost" className='text-subtitle' onClick={() => {
                                 setEditingGroupId(null);
                                 setEditGroupName('');
                                 setSelectedUserIds([]);
                             }}>Cancel</Button>
-                            <Button onClick={() => {
+                            <Button variant="ghost" className='text-subtitle' onClick={() => {
                                 const trimmed = editGroupName.trim();
                                 if (!trimmed) return;
                                 setGroups([
@@ -205,8 +256,8 @@ const GroupTracking = () => {
                         </div>
 
                         <div className="flex justify-end gap-3">
-                            <Button variant="ghost" onClick={() => setEditingGroupId(null)}>Cancel</Button>
-                            <Button onClick={saveGroupChanges}>Save</Button>
+                            <Button variant="ghost" className='text-subtitle' onClick={() => setEditingGroupId(null)}>Cancel</Button>
+                            <Button variant="ghost" className='text-subtitle' onClick={saveGroupChanges}>Save</Button>
                         </div>
                     </div>
                 </div>
