@@ -41,6 +41,7 @@ const GroupTracking = () => {
             .filter((u) => group.users_id.includes(u.id))
             .map((u) => ({ id: u.id, username: u.username }));
 
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { users_id, ...groupData } = group;
 
         const data = {

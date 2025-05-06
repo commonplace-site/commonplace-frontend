@@ -64,7 +64,7 @@ const UsersList = () => {
                     />
                     <select
                         value={roleFilter}
-                        onChange={(e) => setRoleFilter(e.target.value as any)}
+                        onChange={(e) => setRoleFilter(e.target.value as typeof roleFilter)}
                         className="bg-[#1c1b22] text-white hover:bg-white/10 border-0 rounded-md px-3 py-1.5 text-sm"
                     >
                         <option value="all">All Roles</option>
@@ -74,7 +74,7 @@ const UsersList = () => {
                     </select>
                     <select
                         value={blockedFilter}
-                        onChange={(e) => setBlockedFilter(e.target.value as any)}
+                        onChange={(e) => setBlockedFilter(e.target.value as 'all' | 'blocked' | 'unblocked')}
                         className="bg-[#1c1b22] text-white hover:bg-white/10 border-0 rounded-md px-3 py-1.5 text-sm"
                     >
                         <option value="all">All</option>
