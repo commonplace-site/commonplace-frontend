@@ -12,6 +12,7 @@ import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 export default function FilePreviewModal({
@@ -36,7 +37,7 @@ export default function FilePreviewModal({
             fetch("/files/file.txt")
                 .then((res) => res.text())
                 .then(setTextContent)
-                .catch((err) => setTextContent("Failed to load text file."));
+                .catch(() => setTextContent("Failed to load text file."));
         }
     }, [file]);
 
@@ -70,10 +71,12 @@ export default function FilePreviewModal({
                 )}
 
                 {file.type === "image" && (
-                    <img
-                        src={'/files/file.png'}
+                    <Image
+                        src="/files/file.png"
                         alt={file.name}
-                        className="max-w-full max-h-[70vh] rounded"
+                        width={800}
+                        height={600}
+                        className="max-w-full max-h-[70vh] rounded object-contain"
                     />
                 )}
 
@@ -81,7 +84,7 @@ export default function FilePreviewModal({
                     <div className="w-full h-[70vh] bg-white rounded mt-4 overflow-auto px-4">
                         {numPages && (
                             <div className="w-100% flex flex-col">
-                                <div className="text-description m-auto mt-2">Please wait a few seconds if the content doesn't load immediately.</div>
+                                <div className="text-description m-auto mt-2">Please wait a few seconds if the content doesn&apos;t load immediately.</div>
                                 <div className="text-description m-auto mb-2">Total pages: {numPages}</div>
                             </div>
                         )}
