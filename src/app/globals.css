@@ -182,6 +182,11 @@
     @apply border-border outline-ring/50;
   }
 
+  .commonplace-button {
+    @apply px-2 py-2 cursor-pointer rounded-lg border border-[#5C4D91] bg-transparent hover:bg-white/5 font-[600] min-w-[90px] text-[12px] tracking-[-0.01em] text-[#DFE7FF]/80;
+    font-family: "Sora", sans-serif;
+  }
+
   body {
     @apply bg-background text-foreground;
     background-color: #1A1533;

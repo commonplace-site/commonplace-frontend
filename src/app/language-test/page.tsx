@@ -11,7 +11,7 @@ export default function LanguageTest() {
     const [page, setPage] = useState(1);
     return (
         <div className="page">
-            <PageTitle title="Language Test" returnPage="Dashboard" returnPageHref="/" icon={<BookOpen size={22} />} />
+            <PageTitle title="Language Test" returnPage="Dashboard" returnPageHref="/" icon={<BookOpen size={22} />} subtitle="Challenge your fluency, unlock new paths"/>
             <section>
                 <Questions page={page} setPage={setPage} questions={languageTestQuestions} />
             </section>

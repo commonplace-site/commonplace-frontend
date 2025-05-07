@@ -56,17 +56,17 @@ export default function Sidebar() {
                                 href={disabled ? "#" : href}
                                 aria-disabled={disabled}
                                 title={status.charAt(0).toUpperCase() + status.slice(1)}
-                                className={`flex justify-between dark:text-[#C7D2FE] gap-2 px-3 sm:px-4 py-2 font-medium transition-colors rounded-md ${disabled && "cursor-not-allowed opacity-50"} ${pathname === href
+                                className={`flex h-[30px] mb-[4px] justify-between dark:text-[#C7D2FE] gap-2 px-3 sm:px-4 py-2 font-medium transition-colors rounded-md ${disabled && "cursor-not-allowed opacity-50"} ${pathname === href
                                     ? "bg-[#50A7E7] text-white dark:bg-[#18183B] dark:text-[#FFFFFF]"
                                     : "hover:bg-[#0BA5E9] hover:text-white dark:hover:bg-[#18183B] dark:hover:text-[#FFFFFF]"}`}
                             >
                                 <div className="flex items-center">
-                                    <span className="w-6 mr-2 flex justify-center">
+                                    <span className="w-6 mr-2 flex justify-center text-subtitle">
                                         {iconMap[icon as keyof typeof iconMap] ?? null}
                                     </span>
-                                    {!collapsed && label}
+                                    <span className="text-subtitle">{!collapsed && label}</span>
                                 </div>
-                                {group === 'Core Modules' && <div
+                                {(group === 'Core Modules' || group === 'Teaching Modules' || group === 'Admin Console') && <div
                                     className={`w-1 h-1 rounded-full ${status === 'active' ? 'bg-green-500' : ''} ${status === 'upcoming' ? 'bg-yellow-500' : ''} ${status === 'guided' ? 'bg-blue-400' : ''}`}
                                 />}
                             </Link>

@@ -54,12 +54,14 @@ const SidebarItemManagement = () => {
         label,
         icon,
         visible,
+        disabled,
         onToggleVisible,
     }: {
         id: string;
         label: string;
         icon: keyof typeof iconMap;
         visible: boolean;
+        disabled: boolean;
         onToggleVisible: () => void;
     }) => {
         const {
@@ -94,15 +96,23 @@ const SidebarItemManagement = () => {
                         {label}
                     </span>
                 </div>
-                <button
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        onToggleVisible();
-                    }}
-                    className={`cursor-pointer ${visible ? 'text-white' : 'text-gray-500'} transition-colors`}
-                >
-                    {visible ? <Eye size={18} /> : <EyeOff size={18} />}
-                </button>
+                <div className="flex items-center gap-1">
+                    {disabled && (
+                        <div className="flex items-center gap-1 mr-4">
+                            <span className="text-description text-white/20">Coming soon</span>
+                            <span className="w-1.5 h-1.5 ml-2 bg-red-500 rounded-full inline-block" />
+                        </div>
+                    )}
+                    <button
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            onToggleVisible();
+                        }}
+                        className={`cursor-pointer ${visible ? 'text-white' : 'text-gray-500'} transition-colors`}
+                    >
+                        {visible ? <Eye size={18} /> : <EyeOff size={18} />}
+                    </button>
+                </div>
             </div>
         );
     };
@@ -169,6 +179,7 @@ const SidebarItemManagement = () => {
                                         label={item.label}
                                         icon={item.icon as IconName}
                                         visible={item.visible}
+                                        disabled={item.disabled}
                                         onToggleVisible={() => {
                                             const updatedItems = [...sortableItems];
                                             const globalIndex = updatedItems.findIndex(
