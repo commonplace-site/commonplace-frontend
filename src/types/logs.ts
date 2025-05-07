@@ -3,7 +3,7 @@ export type LogMetadata = {
     durationMs?: number;
     relatedFileId?: string;
     affectedModule?: string;
-    [key: string]: string | number | undefined;
+    [key: string]: string | number | boolean | undefined;
 };
 
 export type SystemLogType =
@@ -20,7 +20,7 @@ export type SystemLogEntry = {
     id: string;
     timestamp: string; // ISO format
     type: SystemLogType;
-    source: string; // module or service name, e.g. 'language-test', 'dev-portal'
+    source: string;
     message: string;
     details?: string;
     userId?: string;
