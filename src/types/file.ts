@@ -1,16 +1,25 @@
-export type FileType = 'audio' | 'video' | 'pdf' | 'image' | 'text';
+export type UploadedFileType = 'audio' | 'video' | 'pdf' | 'image' | 'text';
+
+export type FileMetadata = {
+    language?: string;
+    moduleTarget?: string;
+    tags?: string[];
+    description?: string;
+    source?: 'student' | 'teacher' | 'admin' | 'system';
+};
 
 export type UploadedFile = {
     id: string;
     name: string;
-    type: FileType;
+    type: UploadedFileType;
     url: string;
-    uploadedAt: string; // ISO timestamp
-    size?: number;
-    uploaderId?: string;
+    uploadedAt: string;
+    size: number;
+    uploaderId: string;
     uploaderUsername?: string;
-    metadata?: Record<string, any>;
+    metadata?: FileMetadata;
 };
+
 
 export type FileStoreState = {
     files: UploadedFile[];

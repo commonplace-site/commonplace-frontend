@@ -1,4 +1,20 @@
-export type SystemLogType = 'auth' | 'deployment' | 'module' | 'upload' | 'info' | 'system' | 'flag' | 'aalam';
+export type LogMetadata = {
+    ip?: string;
+    durationMs?: number;
+    relatedFileId?: string;
+    affectedModule?: string;
+    [key: string]: string | number | undefined;
+};
+
+export type SystemLogType =
+    | 'auth'
+    | 'deployment'
+    | 'module'
+    | 'upload'
+    | 'info'
+    | 'system'
+    | 'flag'
+    | 'aalam';
 
 export type SystemLogEntry = {
     id: string;
@@ -6,11 +22,11 @@ export type SystemLogEntry = {
     type: SystemLogType;
     source: string; // module or service name, e.g. 'language-test', 'dev-portal'
     message: string;
-    details?: string; // optional expanded description or stack trace
+    details?: string;
     userId?: string;
     username?: string;
-    metadata?: Record<string, any>;
-}
+    metadata?: LogMetadata;
+};
 
 export type SystemLogsState = {
     logs: SystemLogEntry[];

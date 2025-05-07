@@ -4,7 +4,7 @@ import Chonger from "@/components/chonger/Chonger";
 import PageTitle from "@/components/page-title/PageTitle";
 import VocabularyList from "@/components/vocabulary-list/VocabularyList";
 import { useVocabularyStore } from "@/store/useVocabularyStore";
-import { BookText, PencilLine } from "lucide-react";
+import { PencilLine } from "lucide-react";
 
 export default function WritingPractice() {
     const vocabularies = useVocabularyStore((state) => state.vocabularies);
