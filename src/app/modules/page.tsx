@@ -1,5 +1,5 @@
 import PageTitle from "@/components/page-title/PageTitle";
-import { AirVent } from "lucide-react";
+import { Library } from "lucide-react";
 import Bubbles from "@/components/bubbles/Bubbles";
 
 const bubbleData = [
@@ -13,7 +13,7 @@ const bubbleData = [
 export default function Modules() {
     return (
         <div className="page">
-            <PageTitle title="Modules" returnPage="Dashboard" returnPageHref="/" icon={<AirVent size={22} />} subtitle="A journey within, beyond liner paths" />
+            <PageTitle title="Modules" returnPage="Dashboard" returnPageHref="/" icon={<Library size={22} />} subtitle="A journey within, beyond liner paths" />
             <Bubbles bubbles={bubbleData} />
         </div>
     );

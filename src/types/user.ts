@@ -1,12 +1,14 @@
+export type UserRoles = 'Student' | 'Teacher' | 'Admin' | 'Developer';
+
 export type CurrentUser = {
     id: string,
     username: string,
     blocked: boolean,
-    role: 'Student' | 'Teacher' | 'Admin',
+    role: UserRoles,
     module_label: 'English' | 'Chinese',
     isAnonymous: boolean,
     sidebar_items: Record<
-        'Student' | 'Teacher' | 'Admin',
+        UserRoles,
         {
             href: string;
             label: string;

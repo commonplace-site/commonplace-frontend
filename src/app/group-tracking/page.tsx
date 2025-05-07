@@ -3,7 +3,7 @@
 import { useGroupStore } from '@/store/useGroupStore';
 import { useUserStore } from '@/store/useUserStore';
 import { useState } from 'react';
-import { Download, Plus, Archive, Pencil, Group } from 'lucide-react';
+import { Download, Plus, Archive, Pencil, Users2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import PageTitle from '@/components/page-title/PageTitle';
@@ -71,7 +71,7 @@ const GroupTracking = () => {
 
     return (
         <div className="page">
-            <PageTitle title="Group Tracking" icon={<Group />} returnPage='Dashboard' returnPageHref='/' subtitle='Cohort and Group Tracking' />
+            <PageTitle title="Group Tracking" icon={<Users2 size={22} />} returnPage='Dashboard' returnPageHref='/' subtitle='Cohort and Group Tracking' />
             <section>
                 <div className="flex items-center gap-2 mb-4">
                     <Input

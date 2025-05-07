@@ -45,7 +45,7 @@ export default function Dashboard() {
   const [activeTab, setActiveTab] = useState("patterns");
   return (
     <div className="page">
-      <PageTitle title="Dashboard" />
+      <PageTitle title="Dashboard" subtitle="Overview of progress and active modules" />
       <DashboardBar activeTab={activeTab} setActiveTab={setActiveTab} />
       {activeTab === 'patterns' && <div>
         <section><LinguisticPatterns /></section>

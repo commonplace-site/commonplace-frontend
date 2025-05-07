@@ -8,5 +8,5 @@ export type Group = {
 
 export type GroupState = {
     groups: Group[] | [];
-    setGroups: (Groups: Group[]) => void;
+    setGroups: (groups: Group[]) => void;
 };

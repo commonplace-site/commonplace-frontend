@@ -22,11 +22,12 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { iconMap, IconName } from "@/constants/iconMap";
+import { UserRoles } from "@/types/user";
 
 const SidebarItemManagement = () => {
     const currentUser = useUserStore((store) => store.currentUser);
     const updateCurrentUser = useUserStore((store) => store.updateCurrentUser);
-    const role = currentUser?.role as "Student" | "Teacher" | "Admin";
+    const role = currentUser?.role as UserRoles;
 
     const [sortableItems, setSortableItems] = useState(
         currentUser?.sidebar_items?.[role] ?? []
@@ -262,7 +263,7 @@ const ThemeMode = (): JSX.Element => {
 export default function AccountSettings() {
     return (
         <div className="page">
-            <PageTitle title="Account Settings" returnPageHref="/" returnPage="Dashboard" icon={<Settings size={18} />} />
+            <PageTitle title="Account Settings" returnPageHref="/" returnPage="Dashboard" icon={<Settings size={22} />} subtitle="Update details and configurations" />
             <ThemeMode />
             <ModuleLabel />
             <SidebarItemManagement />

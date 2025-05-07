@@ -2,13 +2,14 @@
 
 import PageTitle from "@/components/page-title/PageTitle"
 import { useUserStore } from "@/store/useUserStore";
-import { User, MoreVertical, Trash2, Shield, Ban } from "lucide-react";
+import { MoreVertical, Trash2, Shield, Ban, UserCog } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import * as Switch from "@radix-ui/react-switch";
 import { Input } from '@/components/ui/input';
+import { UserRoles } from "@/types/user";
 
 
-const roleOptions = ["Student", "Teacher", "Admin"] as const;
+const roleOptions = ["Student", "Teacher", "Admin", "Developer"] as const;
 
 const UsersList = () => {
     const usersList = useUserStore((store) => store.usersList);
@@ -17,7 +18,7 @@ const UsersList = () => {
     const [confirmAction, setConfirmAction] = useState<{ type: 'delete' | 'block' | 'role'; index: number } | null>(null);
     const [newRole, setNewRole] = useState<string>('Student');
     const [searchTerm, setSearchTerm] = useState('');
-    const [roleFilter, setRoleFilter] = useState<'all' | 'Student' | 'Teacher' | 'Admin'>('all');
+    const [roleFilter, setRoleFilter] = useState<'all' | UserRoles>('all');
     const [blockedFilter, setBlockedFilter] = useState<'all' | 'blocked' | 'unblocked'>('all');
 
 
@@ -53,7 +54,7 @@ const UsersList = () => {
 
     return (
         <div className="page">
-            <PageTitle title="Users List" returnPage="Dashboard" returnPageHref="/" icon={<User size={22} />} subtitle="Admin panel for managing users" />
+            <PageTitle title="Users List" returnPage="Dashboard" returnPageHref="/" icon={<UserCog size={22} />} subtitle="Admin panel for managing users" />
             <section className="mb-4">
                 <div className="flex items-center gap-2">
                     <Input

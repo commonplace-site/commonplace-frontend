@@ -4,14 +4,14 @@ import Chonger from "@/components/chonger/Chonger";
 import PageTitle from "@/components/page-title/PageTitle";
 import VocabularyList from "@/components/vocabulary-list/VocabularyList";
 import { useVocabularyStore } from "@/store/useVocabularyStore";
-import { BookText } from "lucide-react";
+import { BookText, PencilLine } from "lucide-react";
 
 export default function WritingPractice() {
     const vocabularies = useVocabularyStore((state) => state.vocabularies);
 
     return (
         <div className="page">
-            <PageTitle title="Writing Practice" returnPage="Dashboard" returnPageHref="/" icon={<BookText size={22} />} subtitle="Interactive space for deep language experiments" />
+            <PageTitle title="Writing Practice" returnPage="Dashboard" returnPageHref="/" icon={<PencilLine size={22} />} subtitle="Interactive space for deep language experiments" />
             <section>
                 <Chonger />
             </section>
