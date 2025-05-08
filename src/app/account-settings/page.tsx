@@ -39,7 +39,7 @@ const SidebarItemManagement = () => {
         if (currentUser && role) {
             setSortableItems(currentUser.sidebar_items[role] ?? []);
         }
-    }, [currentUser?.sidebar_items, role]);
+    }, [currentUser, role]);
 
     if (!currentUser || !role) return null;
 

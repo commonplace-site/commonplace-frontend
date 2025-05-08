@@ -43,7 +43,7 @@ export default function FilePreviewModal({
                 .then(setTextContent)
                 .catch(() => setTextContent("Failed to load text file."));
         }
-    }, [file]);
+    }, [file, fileType]);
 
     return (
         <Dialog open={open} onOpenChange={onClose}>

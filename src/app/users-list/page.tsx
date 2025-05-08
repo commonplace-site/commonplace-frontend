@@ -4,7 +4,7 @@ import PageTitle from "@/components/common/page-title/PageTitle"
 import { useUserStore } from "@/store/useUserStore";
 import { useEffect, useRef, useState } from "react";
 import { UserCog } from "lucide-react";
-import { UserRoles } from "@/types/user";
+import { ConfirmAction, UserRoles } from "@/types/user";
 import { ModalConfirm } from "@/components/common/modal-confirm/ModalConfirm";
 import { UserFilters } from "@/components/features/users/UserFilters";
 import { UserCard } from "@/components/features/users/UserCard";
@@ -14,7 +14,7 @@ const roleOptions = ["Student", "Teacher", "Admin", "Developer"] as const;
 const UsersList = () => {
     const usersList = useUserStore((store) => store.usersList);
     const setUsersList = useUserStore((store) => store.setUsersList);
-    const [confirmAction, setConfirmAction] = useState<{ type: 'delete' | 'block' | 'role'; index: number } | null>(null);
+    const [confirmAction, setConfirmAction] = useState<ConfirmAction | null>(null);
     const [openMenuIndex, setOpenMenuIndex] = useState<number | null>(null);
 
     const [newRole, setNewRole] = useState<string>('Student');

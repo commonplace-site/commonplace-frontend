@@ -1,17 +1,18 @@
+import { ConfirmAction, CurrentUser } from "@/types/user";
 import * as Switch from "@radix-ui/react-switch";
 import { MoreVertical, Shield, Ban, Trash2 } from "lucide-react";
 
 interface Props {
-    user: any;
+    user: CurrentUser;
     index: number;
     openMenuIndex: number | null;
     menuRef: React.RefObject<HTMLDivElement | null>;
     setOpenMenuIndex: (index: number | null) => void;
-    setConfirmAction: (action: any) => void;
+    setConfirmAction: (action: ConfirmAction | null) => void;
     setNewRole: (role: string) => void;
-    usersList: any[];
+    usersList: CurrentUser[];
     setOpen: (b: boolean) => void;
-    setUsersList: (list: any[]) => void;
+    setUsersList: (list: CurrentUser[]) => void;
 }
 
 export const UserCard = ({
