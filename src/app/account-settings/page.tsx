@@ -208,7 +208,7 @@ const SidebarItemManagement = () => {
     );
 };
 
-export function LabeledSwitch({
+function LabeledSwitch({
     title,
     labelLeft,
     labelRight,
