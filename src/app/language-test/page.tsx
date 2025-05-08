@@ -1,7 +1,7 @@
 'use client'
 
-import PageTitle from "@/components/page-title/PageTitle";
-import Questions from "@/components/questions/Questions";
+import PageTitle from "@/components/common/page-title/PageTitle";
+import Questions from "@/components/features/questions/Questions";
 import { useQuestionsStore } from "@/store/useQuestionsStore";
 import { FileText } from "lucide-react";
 import { useState } from "react";

@@ -1,13 +1,13 @@
 'use client'
 
-import PageTitle from "@/components/page-title/PageTitle";
+import PageTitle from "@/components/common/page-title/PageTitle";
 import { BookOpen, MessageSquare, Sparkles, Volume2 } from "lucide-react";
 import { useState } from "react";
-import LinguisticPatterns from "@/components/linguistic-patterns/LinguisticPatterns";
-import RecentGrowth from "@/components/recent-growth/RecentGrowth";
-import VocabularyGarden from "@/components/vocabulary-garden/VocabularyGarden";
-import ReflectiveFeedback from "@/components/reflective-feedback/ReflectiveFeedback";
-import MemoryOrbs from "@/components/memory-orbs/MemoryOrbs";
+import LinguisticPatterns from "@/components/features/linguistic-patterns/LinguisticPatterns";
+import RecentGrowth from "@/components/features/recent-growth/RecentGrowth";
+import VocabularyGarden from "@/components/features/vocabulary-garden/VocabularyGarden";
+import ReflectiveFeedback from "@/components/features/reflective-feedback/ReflectiveFeedback";
+import MemoryOrbs from "@/components/features/memory-orbs/MemoryOrbs";
 
 const tabs = [
   { id: "patterns", label: "Patterns", icon: Sparkles },

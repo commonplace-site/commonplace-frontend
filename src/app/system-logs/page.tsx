@@ -1,7 +1,7 @@
 'use client'
 
-import LogList from "@/components/log-list/LogList";
-import PageTitle from "@/components/page-title/PageTitle";
+import LogList from "@/components/features/log-list/LogList";
+import PageTitle from "@/components/common/page-title/PageTitle";
 import { useSystemLogsStore } from "@/store/useSystemLogsStore";
 import { TerminalSquare } from "lucide-react";
 
@@ -10,9 +10,7 @@ export default function SystemLogs() {
     return (
         <div className="page">
             <PageTitle title="System Logs" icon={<TerminalSquare size={22} />} returnPage="Dashboard" returnPageHref="/" subtitle="View and track system-wide actions and developer events" />
-            <section>
-                <LogList logs={logs} />
-            </section>
+            <LogList logs={logs} />
         </div>
     );
 }

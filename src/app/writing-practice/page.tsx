@@ -1,8 +1,8 @@
 'use client'
 
-import Chonger from "@/components/chonger/Chonger";
-import PageTitle from "@/components/page-title/PageTitle";
-import VocabularyList from "@/components/vocabulary-list/VocabularyList";
+import Chonger from "@/components/features/chonger/Chonger";
+import PageTitle from "@/components/common/page-title/PageTitle";
+import VocabularyList from "@/components/features/vocabulary-list/VocabularyList";
 import { useVocabularyStore } from "@/store/useVocabularyStore";
 import { PencilLine } from "lucide-react";
 

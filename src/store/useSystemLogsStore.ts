@@ -218,6 +218,7 @@ const defaultSystemLogs: SystemLogEntry[] = [
     },
 ];
 
+
 export const useSystemLogsStore = create<SystemLogsState>((set) => ({
     logs: defaultSystemLogs,
     setLogs: (logs) => set({ logs }),

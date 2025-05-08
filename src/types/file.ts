@@ -1,5 +1,3 @@
-export type UploadedFileType = 'audio' | 'video' | 'pdf' | 'image' | 'text';
-
 export type FileMetadata = {
     language?: string;
     moduleTarget?: string;
@@ -10,8 +8,6 @@ export type FileMetadata = {
 
 export type UploadedFile = {
     id: string;
-    name: string;
-    type: UploadedFileType;
     url: string;
     uploadedAt: string;
     size: number;

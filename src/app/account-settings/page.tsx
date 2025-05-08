@@ -1,6 +1,6 @@
 'use client'
 
-import PageTitle from "@/components/page-title/PageTitle";
+import PageTitle from "@/components/common/page-title/PageTitle";
 import { Settings, GripVertical, Eye, EyeOff } from "lucide-react";
 import { JSX, useEffect, useState } from "react";
 import { useTheme } from "../ThemeContext";
@@ -208,64 +208,68 @@ const SidebarItemManagement = () => {
     );
 };
 
-const ModuleLabel = (): JSX.Element => {
-    const currentUser = useUserStore((store) => store.currentUser);
-
-    return <section>
-        <div className="subtitle">Module Label</div>
-        <div className="container flex items-center justify-between">
-            <p className="text-subtitle mr-4">Select module language:</p>
-
-            <div className="flex items-center gap-2">
-                <div className="w-[50px] text-center text-sm font-medium text-gray-700 dark:text-gray-300">English</div>
-                <Switch.Root
-                    checked={currentUser?.module_label === 'Chinese'}
-                    onCheckedChange={() => {
-                        const nextLabel = currentUser?.module_label === 'Chinese' ? 'English' : 'Chinese';
-                        useUserStore.getState().updateCurrentUser({ module_label: nextLabel });
-                    }}
-                    className="relative w-12 h-6 bg-gray-300 dark:bg-[#444] rounded-full transition-colors duration-300 data-[state=checked]:bg-[#6F6892]"
-                >
-                    <Switch.Thumb
-                        className="block w-5 h-5 bg-white rounded-full shadow transition-transform duration-300 translate-x-1 data-[state=checked]:translate-x-6"
-                    />
-                </Switch.Root>
-                <div className="w-[50px] text-center text-sm font-medium text-gray-700 dark:text-gray-300">Chinese</div>
+export function LabeledSwitch({
+    title,
+    labelLeft,
+    labelRight,
+    description,
+    checked,
+    onChange,
+}: {
+    title: string;
+    labelLeft: string;
+    labelRight: string;
+    description: string;
+    checked: boolean;
+    onChange: () => void;
+}): JSX.Element {
+    return (
+        <section>
+            <div className="subtitle">{title}</div>
+            <div className="container flex items-center justify-between">
+                <p className="text-subtitle mr-4">{description}</p>
+                <div className="flex items-center gap-2">
+                    <div className="w-[50px] text-center text-sm font-medium text-gray-700 dark:text-gray-300">{labelLeft}</div>
+                    <Switch.Root
+                        checked={checked}
+                        onCheckedChange={onChange}
+                        className="relative w-12 h-6 bg-gray-300 dark:bg-[#444] rounded-full transition-colors duration-300 data-[state=checked]:bg-[#6F6892]"
+                    >
+                        <Switch.Thumb className="block w-5 h-5 bg-white rounded-full shadow transition-transform duration-300 translate-x-1 data-[state=checked]:translate-x-6" />
+                    </Switch.Root>
+                    <div className="w-[50px] text-center text-sm font-medium text-gray-700 dark:text-gray-300">{labelRight}</div>
+                </div>
             </div>
-        </div>
-    </section >
-}
-
-const ThemeMode = (): JSX.Element => {
-    const { theme, toggleTheme } = useTheme();
-
-    return <section>
-        <div className="subtitle">Day/Night Mode</div>
-        <div className="container flex justify-between">
-            <p className="text-subtitle mr-2">Select a theme: </p>
-            <div className="flex items-center gap-2">
-                <div className="w-[50px] text-center text-sm font-medium text-gray-700 dark:text-gray-300">Light</div>
-                <Switch.Root
-                    checked={theme === 'dark'}
-                    onCheckedChange={toggleTheme}
-                    className="relative w-12 h-6 bg-gray-300 dark:bg-[#444] rounded-full transition-colors duration-300 data-[state=checked]:bg-[#6F6892]"
-                >
-                    <Switch.Thumb
-                        className="block w-5 h-5 bg-white rounded-full shadow transition-transform duration-300 translate-x-1 data-[state=checked]:translate-x-6"
-                    />
-                </Switch.Root>
-                <div className="w-[50px] text-center text-sm font-medium text-gray-700 dark:text-gray-300">Dark</div>
-            </div>
-        </div>
-    </section>
+        </section>
+    );
 }
 
 export default function AccountSettings() {
+    const { theme, toggleTheme } = useTheme();
+    const currentUser = useUserStore((store) => store.currentUser);
+
     return (
         <div className="page">
             <PageTitle title="Account Settings" returnPageHref="/" returnPage="Dashboard" icon={<Settings size={22} />} subtitle="Update details and configurations" />
-            <ThemeMode />
-            <ModuleLabel />
+            <LabeledSwitch
+                title="Day/Night Mode"
+                labelLeft="Light"
+                labelRight="Dark"
+                description="Select a theme: "
+                checked={theme === "dark"}
+                onChange={toggleTheme}
+            />
+            <LabeledSwitch
+                title="Module Label"
+                labelLeft="English"
+                labelRight="Chinese"
+                description="Select module language: "
+                checked={currentUser?.module_label === "Chinese"}
+                onChange={() => {
+                    const nextLabel = currentUser?.module_label === "Chinese" ? "English" : "Chinese";
+                    useUserStore.getState().updateCurrentUser({ module_label: nextLabel });
+                }}
+            />
             <SidebarItemManagement />
         </div>
     );

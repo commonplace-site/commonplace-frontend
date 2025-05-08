@@ -1,6 +1,6 @@
-import PageTitle from "@/components/page-title/PageTitle";
+import PageTitle from "@/components/common/page-title/PageTitle";
 import { Library } from "lucide-react";
-import Bubbles from "@/components/bubbles/Bubbles";
+import Bubbles from "@/components/features/bubbles/Bubbles";
 
 const bubbleData = [
     //{ id: '1', label: 'i+1 Radio', colorFrom: '#492E7B', colorTo: '#332975', border: '#493680', href: '/i1-radio' },

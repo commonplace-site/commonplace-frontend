@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "./../styles.scss"
-import Header from "@/components/header/Header";
-import Sidebar from "@/components/sidebar/Sidebar";
-import UserHeader from "@/components/user-header/UserHeader";
+import Header from "@/components/layout/header/Header";
+import Sidebar from "@/components/layout/sidebar/Sidebar";
+import UserHeader from "@/components/layout/user-header/UserHeader";
 import { ThemeProvider } from "./ThemeContext";
-import { SpaceBackground } from "@/components/space-background/SpaceBackground";
+import { SpaceBackground } from "@/components/layout/space-background/SpaceBackground";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

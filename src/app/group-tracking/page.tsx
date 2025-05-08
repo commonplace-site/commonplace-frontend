@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { Download, Plus, Archive, Pencil, Users2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import PageTitle from '@/components/page-title/PageTitle';
+import PageTitle from '@/components/common/page-title/PageTitle';
 
 const GroupTracking = () => {
     const { groups, setGroups } = useGroupStore();
