@@ -2,14 +2,14 @@
 
 import TalkingHead from "@/components/common/head/TalkingHead";
 import PageTitle from "@/components/common/page-title/PageTitle";
-import Questions from "@/components/features/questions/Questions";
-import { useQuestionsStore } from "@/store/useQuestionsStore";
+//import Questions from "@/components/features/questions/Questions";
+//import { useQuestionsStore } from "@/store/useQuestionsStore";
 import { Mic } from "lucide-react";
-import { useState } from "react";
+//import { useState } from "react";
 
 export default function SpeakingPractice() {
-    const [page, setPage] = useState(1);
-    const questions = useQuestionsStore((store) => store.questions);
+    //const [page, setPage] = useState(1);
+    //const questions = useQuestionsStore((store) => store.questions);
 
     return (
         <div className="page">
