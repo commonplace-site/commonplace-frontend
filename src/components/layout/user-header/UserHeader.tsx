@@ -1,5 +1,6 @@
 'use client'
 
+import AvatarCircle from "@/components/common/user/AvatarCircle";
 import { useUserStore } from "@/store/useUserStore";
 import { CurrentUser } from "@/types/user";
 import { Bell, Search } from "lucide-react";
@@ -40,9 +41,7 @@ const UserHeader = () => {
                             </span>
                         )}
                     </button>
-                    <div className="w-10 h-10 flex items-center justify-center rounded-full bg-[#9B87F5] text-white text-indigo-700 font-bold text-xl select-none">
-                        {currentUser?.username?.[0]?.toUpperCase() || "U"}
-                    </div>
+                    <AvatarCircle />
                 </div>
             </div>
         </div>

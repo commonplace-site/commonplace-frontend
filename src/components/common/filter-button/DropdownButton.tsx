@@ -15,7 +15,7 @@ export default function DropdownButton({ label, items, onSelect }: Props) {
         <div className="relative">
             <Button
                 variant="outline"
-                className="text-subtitle border-0 w-[100%]"
+                className="text-subtitle text-[12px] commonplace-button border-0 w-[100%]"
                 onClick={() => setOpen(!open)}
             >
                 {label}

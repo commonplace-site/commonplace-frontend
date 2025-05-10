@@ -18,6 +18,7 @@ export function ModalConfirm({
     confirmLabel?: string;
     children?: React.ReactNode;
 }) {
+    
     return (
         <Dialog open={open} onOpenChange={onClose}>
             <DialogContent className="bg-[#1A1533] border border-[#322945] p-6 text-white rounded-md shadow-xl modal">

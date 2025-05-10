@@ -11,6 +11,7 @@ const defaultCurrentUser: CurrentUser = {
     sidebar_items: {
         Student: [
             { href: "/", label: "Dashboard", icon: "LayoutDashboard", disabled: false, visible: true, status: 'active', group: "General" },
+            { href: "/aalam", label: "Aalam", icon: "Brain", disabled: false, visible: true, status: 'active', group: "General" },
             { href: "/modules", label: "Modules", icon: "Library", disabled: false, visible: true, status: 'active', group: 'Core Modules' },
             { href: "/diagnostic", label: "Diagnostic Module", icon: "Stethoscope", disabled: true, visible: true, status: 'upcoming', group: 'Core Modules' },
             { href: "/language-test", label: "Language Test", icon: "FileText", disabled: false, visible: true, status: 'active', group: 'Core Modules' },
@@ -28,6 +29,7 @@ const defaultCurrentUser: CurrentUser = {
         ],
         Teacher: [
             { href: "/", label: "Dashboard", icon: "LayoutDashboard", disabled: true, visible: true, status: 'upcoming', group: "Core Navigation" },
+            { href: "/aalam", label: "Aalam", icon: "Brain", disabled: false, visible: true, status: 'active', group: "Core Navigation" },
             { href: "/users-list", label: "Student List View", icon: "ListOrdered", disabled: true, visible: true, status: 'upcoming', group: "Core Navigation" },
             { href: "/module-engagement", label: "Module Engagement", icon: "Activity", disabled: true, visible: true, status: 'upcoming', group: "Core Navigation" },
             { href: "/language-test", label: "Language Test", icon: "FileText", disabled: true, visible: true, status: 'upcoming', group: "Teaching Modules" },
@@ -47,6 +49,7 @@ const defaultCurrentUser: CurrentUser = {
         ],
         Admin: [
             { href: "/", label: "Dashboard", icon: "LayoutDashboard", disabled: true, visible: true, status: 'upcoming', group: "Core Navigation" },
+            { href: "/aalam", label: "Aalam", icon: "Brain", disabled: false, visible: true, status: 'active', group: "Core Navigation" },
             { href: '/room127', label: 'Room 127', icon: "DoorOpen", disabled: true, visible: true, status: 'upcoming', group: 'Core Navigation' },
             { href: '/codex', label: 'Codex', icon: "BookOpen", disabled: true, visible: true, status: 'upcoming', group: 'Core Navigation' },
             { href: '/users-list', label: "Users Management", icon: "UserCog", disabled: false, visible: true, status: 'active', group: 'Admin Console' },
@@ -63,6 +66,7 @@ const defaultCurrentUser: CurrentUser = {
         ],
         Developer: [
             { href: "/", label: "Dashboard", icon: "LayoutDashboard", disabled: true, visible: true, status: "active", group: "Core Navigation" },
+            { href: "/aalam", label: "Aalam", icon: "Brain", disabled: false, visible: true, status: 'active', group: "Core Navigation" },
             { href: '/system-logs', label: 'System Logs Viewer', icon: "TerminalSquare", disabled: false, visible: true, status: 'active', group: 'Dev Tools' },
             { href: '/file-oversight', label: 'File oversight', icon: "FolderSearch", disabled: false, visible: true, status: 'upcoming', group: 'Dev Tools' },
             { href: '/flag-controls', label: 'Feature Flag Controls', icon: "Flag", disabled: true, visible: true, status: 'upcoming', group: 'Dev Tools' },

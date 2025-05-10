@@ -247,6 +247,7 @@ function LabeledSwitch({
 export default function AccountSettings() {
     const { theme, toggleTheme } = useTheme();
     const currentUser = useUserStore((store) => store.currentUser);
+    
 
     return (
         <div className="page">

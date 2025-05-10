@@ -40,7 +40,8 @@ import {
     FileText,
     ListOrdered,
     Map,
-    AudioWaveform
+    AudioWaveform,
+    Brain
 } from "lucide-react";
 
 export const iconMap = {
@@ -86,6 +87,7 @@ export const iconMap = {
     ListOrdered: <ListOrdered size={18} />,
     Map: <Map size={18} />,
     Waveform: <AudioWaveform size={18} />,
+    Brain: <Brain size={18} />
 } as const;
 
 export type IconName = keyof typeof iconMap;

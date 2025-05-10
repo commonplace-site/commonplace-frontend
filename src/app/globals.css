@@ -183,7 +183,7 @@
   }
 
   .commonplace-button {
-    @apply px-3 py-1.5 cursor-pointer rounded-lg border border-[#322945] bg-black/40 hover:bg-white/10 text-[#DFE7FF] text-[13px] tracking-[-0.01em] font-medium transition-colors duration-150 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white/5;
+    @apply px-3 py-1.5 cursor-pointer rounded-lg border border-[#322945] bg-black/40 hover:bg-white/10 text-[#DFE7FF] text-[12px] tracking-[-0.01em] font-medium transition-colors duration-150 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white/5;
     font-family: "Sora", sans-serif;
   }
 
